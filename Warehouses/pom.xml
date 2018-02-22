@@ -30,11 +30,6 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.persistence/com.springsource.javax.persistence -->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>com.springsource.javax.persistence</artifactId>
-        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -44,6 +39,36 @@
             <version>1.16.20</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>1.7.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>1.7.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.javacrumbs.json-unit/json-unit-fluent -->
+        <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-fluent</artifactId>
+            <version>1.28.2</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
     <build>
