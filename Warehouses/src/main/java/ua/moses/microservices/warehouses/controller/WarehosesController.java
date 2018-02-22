@@ -10,30 +10,30 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "${warehouses.endpoint.url}", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "${warehouses.endpoint.url}")
 public class WarehosesController {
     @Inject
     private WarehousesService warehousesService;
 
-    @GetMapping
+    @GetMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<List<Warehouses>> getAllWarehouses() {
         List<Warehouses> result = warehousesService.getAllWarehouses();
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(consumes = "application/json;charset=UTF-8")
+    @PostMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouses> insertWarehous(@Valid @RequestBody Warehouses warehous) {
         Warehouses result = warehousesService.insertWarehous(warehous);
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping(consumes = "application/json;charset=UTF-8")
+    @DeleteMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouses> deleteWarehous(@Valid @RequestBody Warehouses warehous) {
         Warehouses result = warehousesService.deleteWarehous(warehous);
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping(consumes = "application/json;charset=UTF-8")
+    @PutMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouses> updateWarehous(@Valid @RequestBody Warehouses warehous) {
         Warehouses result = warehousesService.updateWarehous(warehous);
         return ResponseEntity.ok(result);
