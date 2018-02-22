@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/v1/warehouses", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "${warehouses.endpoint.url}", produces = "application/json;charset=UTF-8")
 public class WarehosesController {
     @Inject
     private WarehousesService warehousesService;
