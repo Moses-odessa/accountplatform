@@ -1,5 +1,6 @@
 package ua.moses.microservices.warehouses.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ua.moses.microservices.warehouses.model.Warehouses;
 import ua.moses.microservices.warehouses.repository.WarehousesRepository;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class WarehousesServiceImpl implements WarehousesService {
     @Inject
     private WarehousesRepository warehousesRepository;
