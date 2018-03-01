@@ -18,8 +18,8 @@ public class WarehousesServiceImpl implements WarehousesService {
     private WarehousesRepository warehousesRepository;
 
     @Override
-    public List<Warehouse> getAllWarehouses() {
-        return warehousesRepository.findAll();
+    public List<Warehouse> getAllWarehouses(String ownerId) {
+        return warehousesRepository.findByOwnerId(ownerId);
     }
 
     @Override

@@ -7,33 +7,37 @@ import ua.moses.microservices.warehouses.service.WarehousesService;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "${warehouses.endpoint.url}")
+@RequestMapping(value = "${warehouses.endpoint.url}", produces = "application/json;charset=UTF-8")
 public class WarehosesController {
     @Inject
     private WarehousesService warehousesService;
 
-    @GetMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<List<Warehouse>> getAllWarehouses() {
-        List<Warehouse> result = warehousesService.getAllWarehouses();
+    @GetMapping(value = "{ownerId}")
+    public ResponseEntity<List<Warehouse>> getAllWarehouses(@PathVariable String ownerId) {
+        List<Warehouse> result = warehousesService.getAllWarehouses(ownerId);
+        if (result == null) {
+            result = new ArrayList<>(0);
+        }
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
+    @PostMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouse> insertWarehous(@Valid @RequestBody Warehouse warehous) {
         Warehouse result = warehousesService.insertWarehous(warehous);
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
+    @DeleteMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouse> deleteWarehous(@Valid @RequestBody Warehouse warehous) {
         Warehouse result = warehousesService.deleteWarehous(warehous);
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping(consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
+    @PutMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouse> updateWarehous(@Valid @RequestBody Warehouse warehous) {
         Warehouse result = warehousesService.updateWarehous(warehous);
         return ResponseEntity.ok(result);

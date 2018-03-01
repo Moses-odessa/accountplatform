@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface WarehousesService {
 
-    List<Warehouse> getAllWarehouses();
+    List<Warehouse> getAllWarehouses(String ownerId);
 
     Warehouse insertWarehous(Warehouse warehous);
 

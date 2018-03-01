@@ -32,9 +32,10 @@ public class WarehousesServiceTest {
 
     @Test
     public void getAllWarehousesTest() {
-        List<Warehouse> expectedList = Arrays.asList(new Warehouse("owner","stock1"), new Warehouse("owner", "stock2"));
-        when(warehousesRepository.findAll()).thenReturn(expectedList);
-        List<Warehouse> result = warehousesService.getAllWarehouses();
+        String ownerId = "owner";
+        List<Warehouse> expectedList = Arrays.asList(new Warehouse(ownerId,"stock1"), new Warehouse(ownerId, "stock2"));
+        when(warehousesRepository.findByOwnerId(ownerId)).thenReturn(expectedList);
+        List<Warehouse> result = warehousesService.getAllWarehouses(ownerId);
         assertEquals(expectedList, result);
     }
 

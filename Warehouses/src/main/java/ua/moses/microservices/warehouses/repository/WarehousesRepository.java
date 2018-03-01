@@ -8,4 +8,6 @@ import java.util.List;
 public interface WarehousesRepository extends MongoRepository<Warehouse, String> {
     public Warehouse findByName(String name);
     public List<Warehouse> findAll();
+    public List<Warehouse> findByOwnerId(String ownerId);
+
 }

@@ -59,17 +59,18 @@ public class WarehousesControllerTest {
 
     @Test
     public void getAllWarehousesTest() throws Exception {
-        List<Warehouse> expectedList = Arrays.asList(new Warehouse("owner", "stock1"), new Warehouse("owner", "stock2"));
-        when(warehousesService.getAllWarehouses()).thenReturn(expectedList);
+        String ownerId = "owner";
+        List<Warehouse> expectedList = Arrays.asList(new Warehouse(ownerId, "stock1"), new Warehouse(ownerId, "stock2"));
+        when(warehousesService.getAllWarehouses(ownerId)).thenReturn(expectedList);
 
-        String result = mockMvc.perform(get(warehousesEndpointUrl)
+        String result = mockMvc.perform(get(warehousesEndpointUrl + "/" + ownerId)
                 .contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
         assertThatJson(result).when(Option.IGNORING_ARRAY_ORDER).isEqualTo(expectedList);
-        verify(warehousesService).getAllWarehouses();
+        verify(warehousesService).getAllWarehouses(ownerId);
         verifyNoMoreInteractions(warehousesService);
 
     }
