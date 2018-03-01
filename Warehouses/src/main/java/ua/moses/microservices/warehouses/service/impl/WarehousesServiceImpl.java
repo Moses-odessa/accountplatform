@@ -1,8 +1,9 @@
 package ua.moses.microservices.warehouses.service.impl;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
-import ua.moses.microservices.warehouses.model.Warehouses;
+import ua.moses.microservices.warehouses.model.Warehouse;
 import ua.moses.microservices.warehouses.repository.WarehousesRepository;
 import ua.moses.microservices.warehouses.service.WarehousesService;
 
@@ -11,22 +12,23 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class WarehousesServiceImpl implements WarehousesService {
     @Inject
     private WarehousesRepository warehousesRepository;
 
-    public List<Warehouses> getAllWarehouses() {
+    @Override
+    public List<Warehouse> getAllWarehouses() {
         return warehousesRepository.findAll();
-
     }
 
     @Override
-    public Warehouses insertWarehous(Warehouses warehous) {
+    public Warehouse insertWarehous(Warehouse warehous) {
         return warehousesRepository.insert(warehous);
     }
 
     @Override
-    public Warehouses deleteWarehous(Warehouses warehous) {
+    public Warehouse deleteWarehous(Warehouse warehous) {
         if (warehousesRepository.exists(warehous.getId())) {
             warehousesRepository.delete(warehous);
             return warehous;
@@ -36,7 +38,7 @@ public class WarehousesServiceImpl implements WarehousesService {
     }
 
     @Override
-    public Warehouses updateWarehous(Warehouses warehous) {
+    public Warehouse updateWarehous(Warehouse warehous) {
         if (warehousesRepository.exists(warehous.getId())) {
             warehousesRepository.save(warehous);
             return warehous;

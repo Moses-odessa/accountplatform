@@ -1,15 +1,16 @@
 package ua.moses.microservices.warehouses.service;
 
-import ua.moses.microservices.warehouses.model.Warehouses;
+import ua.moses.microservices.warehouses.model.Warehouse;
 
 import java.util.List;
 
 public interface WarehousesService {
-    List<Warehouses> getAllWarehouses();
 
-    Warehouses insertWarehous(Warehouses warehous);
+    List<Warehouse> getAllWarehouses();
 
-    Warehouses deleteWarehous(Warehouses warehous);
+    Warehouse insertWarehous(Warehouse warehous);
 
-    Warehouses updateWarehous(Warehouses warehous);
+    Warehouse deleteWarehous(Warehouse warehous);
+
+    Warehouse updateWarehous(Warehouse warehous);
 }

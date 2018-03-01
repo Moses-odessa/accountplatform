@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import ua.moses.microservices.warehouses.model.Warehouses;
+import ua.moses.microservices.warehouses.model.Warehouse;
 import ua.moses.microservices.warehouses.service.WarehousesService;
 
 import javax.inject.Inject;
@@ -59,7 +59,7 @@ public class WarehousesControllerTest {
 
     @Test
     public void getAllWarehousesTest() throws Exception {
-        List<Warehouses> expectedList = Arrays.asList(new Warehouses("stock1"), new Warehouses("stock2"));
+        List<Warehouse> expectedList = Arrays.asList(new Warehouse("owner", "stock1"), new Warehouse("owner", "stock2"));
         when(warehousesService.getAllWarehouses()).thenReturn(expectedList);
 
         String result = mockMvc.perform(get(warehousesEndpointUrl)
@@ -76,8 +76,8 @@ public class WarehousesControllerTest {
 
     @Test
     public void insertWarehousTest() throws Exception {
-        Warehouses expected = new Warehouses("1", "stock1");
-        when(warehousesService.insertWarehous(any(Warehouses.class))).thenReturn(expected);
+        Warehouse expected = new Warehouse("owner", "stock1");
+        when(warehousesService.insertWarehous(any(Warehouse.class))).thenReturn(expected);
 
         mockMvc.perform(post(warehousesEndpointUrl)
                 .content(convertToJsonString(expected))
@@ -86,14 +86,14 @@ public class WarehousesControllerTest {
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().string(convertToJsonString(expected)));
 
-        verify(warehousesService).insertWarehous(any(Warehouses.class));
+        verify(warehousesService).insertWarehous(any(Warehouse.class));
         verifyNoMoreInteractions(warehousesService);
     }
 
     @Test
     public void deleteWarehousTest() throws Exception {
-        Warehouses expected = new Warehouses("1", "stock1");
-        when(warehousesService.deleteWarehous(any(Warehouses.class))).thenReturn(expected);
+        Warehouse expected = new Warehouse("owner", "stock1");
+        when(warehousesService.deleteWarehous(any(Warehouse.class))).thenReturn(expected);
 
         mockMvc.perform(delete(warehousesEndpointUrl)
                 .contentType(APPLICATION_JSON_UTF8)
@@ -102,14 +102,14 @@ public class WarehousesControllerTest {
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().string(convertToJsonString(expected)));
 
-        verify(warehousesService).deleteWarehous(any(Warehouses.class));
+        verify(warehousesService).deleteWarehous(any(Warehouse.class));
         verifyNoMoreInteractions(warehousesService);
     }
 
     @Test
     public void updateWarehousTest() throws Exception {
-        Warehouses expected = new Warehouses("1", "stock1");
-        when(warehousesService.updateWarehous(any(Warehouses.class))).thenReturn(expected);
+        Warehouse expected = new Warehouse("owner", "stock1");
+        when(warehousesService.updateWarehous(any(Warehouse.class))).thenReturn(expected);
 
         mockMvc.perform(put(warehousesEndpointUrl)
                 .contentType(APPLICATION_JSON_UTF8)
@@ -118,7 +118,7 @@ public class WarehousesControllerTest {
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().string(convertToJsonString(expected)));
 
-        verify(warehousesService).updateWarehous(any(Warehouses.class));
+        verify(warehousesService).updateWarehous(any(Warehouse.class));
         verifyNoMoreInteractions(warehousesService);
     }
 
