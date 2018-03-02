@@ -34,7 +34,7 @@ public class WarehousesServiceTest {
     public void getAllWarehousesTest() {
         String ownerId = "owner";
         List<Warehouse> expectedList = Arrays.asList(new Warehouse(ownerId,"stock1"), new Warehouse(ownerId, "stock2"));
-        when(warehousesRepository.findByOwnerIdAndDeleted(ownerId, false)).thenReturn(expectedList);
+        when(warehousesRepository.getAllWarehouses(ownerId)).thenReturn(expectedList);
         List<Warehouse> result = warehousesService.getAllWarehouses(ownerId);
         assertEquals(expectedList, result);
     }

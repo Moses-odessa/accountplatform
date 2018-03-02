@@ -19,7 +19,7 @@ public class WarehousesServiceImpl implements WarehousesService {
 
     @Override
     public List<Warehouse> getAllWarehouses(String ownerId) {
-        return warehousesRepository.findByOwnerIdAndDeleted(ownerId, false);
+        return warehousesRepository.getAllWarehouses(ownerId);
     }
 
     @Override
