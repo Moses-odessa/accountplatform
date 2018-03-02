@@ -1,0 +1,10 @@
+{
+  "warehouse": {
+    "data": [
+      {"id":"5a99550ea3e33c0e84641406","ownerId":"owner","name":"Stock1","deleted":false},
+      {"id":"5a99550ea3e33c0e8464140a","ownerId":"owner","name":"Stock2","deleted":false},
+      {"id":"5a99550ea3e33c0e8464140b","ownerId":"owner","name":"Stock3","deleted":true},
+      {"id":"5a99550ea3e33c0e8464140c","ownerId":"owner2","name":"Stock1","deleted":false}
+    ]
+  }
+}
