@@ -29,9 +29,6 @@ public class WarehousesRepositoryTest {
     @Rule
     public MongoDbRule mongoDbRule = newMongoDbRule().defaultSpringMongoDb("warehouses-test");
 
-    /**
-     * nosql-unit requirement
-     */
     @Autowired
     private ApplicationContext applicationContext;
 

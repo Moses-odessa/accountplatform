@@ -8,9 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-/**
- * Created by arthurportas on 21/01/2017.
- */
 @ComponentScan(basePackages = "ua.moses.microservices.warehouses")
 @EnableMongoRepositories(basePackages = "ua.moses.microservices.warehouses.repository")
 @Configuration
