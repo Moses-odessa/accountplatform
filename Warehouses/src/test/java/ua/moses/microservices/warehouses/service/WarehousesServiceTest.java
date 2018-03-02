@@ -34,7 +34,7 @@ public class WarehousesServiceTest {
     public void getAllWarehousesTest() {
         String ownerId = "owner";
         List<Warehouse> expectedList = Arrays.asList(new Warehouse(ownerId,"stock1"), new Warehouse(ownerId, "stock2"));
-        when(warehousesRepository.findByOwnerId(ownerId)).thenReturn(expectedList);
+        when(warehousesRepository.findByOwnerIdAndDeleted(ownerId, false)).thenReturn(expectedList);
         List<Warehouse> result = warehousesService.getAllWarehouses(ownerId);
         assertEquals(expectedList, result);
     }
@@ -44,6 +44,26 @@ public class WarehousesServiceTest {
         Warehouse expected = new Warehouse("owner","stock1");
         when(warehousesRepository.insert(expected)).thenReturn(expected);
         Warehouse result = warehousesService.insertWarehous(expected);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void deleteWarehousTest() {
+        Warehouse given = new Warehouse("owner","stock1");
+        Warehouse expected = new Warehouse("owner","stock1");
+        expected.setDeleted(true);
+        when(warehousesRepository.exists(given.getId())).thenReturn(true);
+        Warehouse result = warehousesService.deleteWarehous(given);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void updateWarehousTest() {
+        Warehouse expected = new Warehouse("owner","stock1");
+        expected.setDeleted(true);
+        when(warehousesRepository.exists(expected.getId())).thenReturn(true);
+        when(warehousesRepository.save(expected)).thenReturn(expected);
+        Warehouse result = warehousesService.updateWarehous(expected);
         assertEquals(expected, result);
     }
 

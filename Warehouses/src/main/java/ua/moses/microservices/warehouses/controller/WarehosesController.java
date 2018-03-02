@@ -26,20 +26,20 @@ public class WarehosesController {
     }
 
     @PostMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> insertWarehous(@Valid @RequestBody Warehouse warehous) {
-        Warehouse result = warehousesService.insertWarehous(warehous);
+    public ResponseEntity<Warehouse> insertWarehous(@Valid @RequestBody Warehouse warehouse) {
+        Warehouse result = warehousesService.insertWarehous(warehouse);
         return ResponseEntity.ok(result);
     }
 
     @DeleteMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> deleteWarehous(@Valid @RequestBody Warehouse warehous) {
-        Warehouse result = warehousesService.deleteWarehous(warehous);
+    public ResponseEntity<Warehouse> deleteWarehous(@Valid @RequestBody Warehouse warehouse) {
+        Warehouse result = warehousesService.deleteWarehous(warehouse);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> updateWarehous(@Valid @RequestBody Warehouse warehous) {
-        Warehouse result = warehousesService.updateWarehous(warehous);
+    public ResponseEntity<Warehouse> updateWarehous(@Valid @RequestBody Warehouse warehouse) {
+        Warehouse result = warehousesService.updateWarehous(warehouse);
         return ResponseEntity.ok(result);
     }
 

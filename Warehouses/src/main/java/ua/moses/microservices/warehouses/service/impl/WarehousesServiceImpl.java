@@ -19,7 +19,7 @@ public class WarehousesServiceImpl implements WarehousesService {
 
     @Override
     public List<Warehouse> getAllWarehouses(String ownerId) {
-        return warehousesRepository.findByOwnerId(ownerId);
+        return warehousesRepository.findByOwnerIdAndDeleted(ownerId, false);
     }
 
     @Override
@@ -30,7 +30,8 @@ public class WarehousesServiceImpl implements WarehousesService {
     @Override
     public Warehouse deleteWarehous(Warehouse warehous) {
         if (warehousesRepository.exists(warehous.getId())) {
-            warehousesRepository.delete(warehous);
+            warehous.setDeleted(true);
+            warehousesRepository.save(warehous);
             return warehous;
         } else {
             return null;
@@ -40,8 +41,7 @@ public class WarehousesServiceImpl implements WarehousesService {
     @Override
     public Warehouse updateWarehous(Warehouse warehous) {
         if (warehousesRepository.exists(warehous.getId())) {
-            warehousesRepository.save(warehous);
-            return warehous;
+            return warehousesRepository.save(warehous);
         } else {
             return null;
         }
