@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
 
@@ -40,7 +39,7 @@ public class WarehousesServiceTest {
     }
 
     @Test
-    public void insertWarehousTest() {
+    public void insertWarehouseTest() {
         Warehouse expected = new Warehouse("owner","stock1");
         when(warehousesRepository.insert(expected)).thenReturn(expected);
         Warehouse result = warehousesService.insertWarehouse(expected);
@@ -48,7 +47,7 @@ public class WarehousesServiceTest {
     }
 
     @Test
-    public void deleteWarehousTest() {
+    public void deleteWarehouseTest() {
         Warehouse given = new Warehouse("owner","stock1");
         Warehouse expected = new Warehouse("owner","stock1");
         expected.setDeleted(true);
@@ -58,7 +57,7 @@ public class WarehousesServiceTest {
     }
 
     @Test
-    public void updateWarehousTest() {
+    public void updateWarehouseTest() {
         Warehouse expected = new Warehouse("owner","stock1");
         expected.setDeleted(true);
         when(warehousesRepository.exists(expected.getId())).thenReturn(true);

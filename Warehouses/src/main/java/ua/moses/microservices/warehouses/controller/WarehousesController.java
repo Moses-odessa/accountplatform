@@ -38,13 +38,13 @@ public class WarehousesController {
     }
 
     @DeleteMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> deleteWarehous(@Valid @RequestBody Warehouse warehouse) {
+    public ResponseEntity<Warehouse> deleteWarehouse(@Valid @RequestBody Warehouse warehouse) {
         Warehouse result = warehousesService.deleteWarehouse(warehouse);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> updateWarehous(@Valid @RequestBody Warehouse warehouse) {
+    public ResponseEntity<Warehouse> updateWarehouse(@Valid @RequestBody Warehouse warehouse) {
         Warehouse result = warehousesService.updateWarehouse(warehouse);
         return ResponseEntity.ok(result);
     }

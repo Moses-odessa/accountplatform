@@ -76,7 +76,7 @@ public class WarehousesControllerTest {
     }
 
     @Test
-    public void insertWarehousTest() throws Exception {
+    public void insertWarehouseTest() throws Exception {
         Warehouse expected = new Warehouse("owner", "stock1");
         when(warehousesService.insertWarehouse(any(Warehouse.class))).thenReturn(expected);
 
@@ -92,7 +92,7 @@ public class WarehousesControllerTest {
     }
 
     @Test
-    public void deleteWarehousTest() throws Exception {
+    public void deleteWarehouseTest() throws Exception {
         Warehouse expected = new Warehouse("owner", "stock1");
         when(warehousesService.deleteWarehouse(any(Warehouse.class))).thenReturn(expected);
 
@@ -108,7 +108,7 @@ public class WarehousesControllerTest {
     }
 
     @Test
-    public void updateWarehousTest() throws Exception {
+    public void updateWarehouseTest() throws Exception {
         Warehouse expected = new Warehouse("owner", "stock1");
         when(warehousesService.updateWarehouse(any(Warehouse.class))).thenReturn(expected);
 
