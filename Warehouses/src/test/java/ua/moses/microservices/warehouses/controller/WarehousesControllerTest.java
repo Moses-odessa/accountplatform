@@ -20,6 +20,7 @@ import java.util.List;
 
 import static net.javacrumbs.jsonunit.fluent.JsonFluentAssert.assertThatJson;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -71,6 +72,24 @@ public class WarehousesControllerTest {
 
         assertThatJson(result).when(Option.IGNORING_ARRAY_ORDER).isEqualTo(expectedList);
         verify(warehousesService).getAllWarehouses(ownerId);
+        verifyNoMoreInteractions(warehousesService);
+
+    }
+
+    @Test
+    public void getWarehouseByIdTest() throws Exception {
+        String warehouseId = "5a981eaba3e33c120c2c67bf";
+        String ownerId = "owner";
+        Warehouse expected = new Warehouse(warehouseId, ownerId, "stock1", false);
+        when(warehousesService.getWarehouseById(ownerId, warehouseId)).thenReturn(expected);
+
+        mockMvc.perform(get(warehousesEndpointUrl + "/owner/" + warehouseId)
+                .contentType(APPLICATION_JSON_UTF8))
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+                .andExpect(content().string(convertToJsonString(expected)));
+        verify(warehousesService).getWarehouseById(ownerId, warehouseId);
         verifyNoMoreInteractions(warehousesService);
 
     }

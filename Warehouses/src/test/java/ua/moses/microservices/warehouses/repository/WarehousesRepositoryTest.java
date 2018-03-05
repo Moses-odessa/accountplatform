@@ -37,10 +37,19 @@ public class WarehousesRepositoryTest {
 
     @Test
     @UsingDataSet(locations = {"/warehouses.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
-    public void testCountAllWarehouses() {
-        List<Warehouse> result = this.warehousesRepository.getAllWarehouses("owner");
+    public void FindAllCountTest() {
+        List<Warehouse> result = warehousesRepository.getAllWarehouses("owner");
         assertThat(result.size()).isEqualTo(2);
-        result = this.warehousesRepository.findAll();
+        result = warehousesRepository.findAll();
         assertThat(result.size()).isEqualTo(4);
+    }
+
+    @Test
+    @UsingDataSet(locations = {"/warehouses.json"}, loadStrategy = LoadStrategyEnum.CLEAN_INSERT)
+    public void findByOwnerIdAndIdTest() {
+        Warehouse result = warehousesRepository.findByOwnerIdAndId("owner", "5a99550ea3e33c0e8464140a");
+        assertThat(result).isNotNull();
+        result = warehousesRepository.findByOwnerIdAndId("owner2", "5a99550ea3e33c0e84641400");
+        assertThat(result).isNull();
     }
 }

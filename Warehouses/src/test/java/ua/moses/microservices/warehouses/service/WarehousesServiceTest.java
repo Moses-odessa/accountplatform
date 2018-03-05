@@ -38,12 +38,23 @@ public class WarehousesServiceTest {
     }
 
     @Test
+    public void getWarehouseByIdTest() {
+        String warehouseId = "5a981eaba3e33c120c2c67bf";
+        String ownerId = "owner";
+        Warehouse expected = new Warehouse(warehouseId, ownerId, "stock1", false);
+        when(warehousesRepository.findByOwnerIdAndId(ownerId, warehouseId)).thenReturn(expected);
+        Warehouse result = warehousesService.getWarehouseById(ownerId, warehouseId);
+        assertEquals(expected, result);
+    }
+
+    @Test
     public void insertWarehouseTest() {
         Warehouse expected = new Warehouse("owner","stock1");
         when(warehousesRepository.insert(expected)).thenReturn(expected);
         Warehouse result = warehousesService.insertWarehouse(expected);
         assertEquals(expected, result);
     }
+
 
     @Test
     public void deleteWarehouseTest() {
