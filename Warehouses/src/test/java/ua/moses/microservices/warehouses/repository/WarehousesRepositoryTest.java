@@ -40,5 +40,7 @@ public class WarehousesRepositoryTest {
     public void testCountAllWarehouses() {
         List<Warehouse> result = this.warehousesRepository.getAllWarehouses("owner");
         assertThat(result.size()).isEqualTo(2);
+        result = this.warehousesRepository.findAll();
+        assertThat(result.size()).isEqualTo(4);
     }
 }

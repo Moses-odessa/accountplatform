@@ -43,7 +43,7 @@ public class WarehousesServiceTest {
     public void insertWarehousTest() {
         Warehouse expected = new Warehouse("owner","stock1");
         when(warehousesRepository.insert(expected)).thenReturn(expected);
-        Warehouse result = warehousesService.insertWarehous(expected);
+        Warehouse result = warehousesService.insertWarehouse(expected);
         assertEquals(expected, result);
     }
 
@@ -53,7 +53,7 @@ public class WarehousesServiceTest {
         Warehouse expected = new Warehouse("owner","stock1");
         expected.setDeleted(true);
         when(warehousesRepository.exists(given.getId())).thenReturn(true);
-        Warehouse result = warehousesService.deleteWarehous(given);
+        Warehouse result = warehousesService.deleteWarehouse(given);
         assertEquals(expected, result);
     }
 
@@ -63,7 +63,7 @@ public class WarehousesServiceTest {
         expected.setDeleted(true);
         when(warehousesRepository.exists(expected.getId())).thenReturn(true);
         when(warehousesRepository.save(expected)).thenReturn(expected);
-        Warehouse result = warehousesService.updateWarehous(expected);
+        Warehouse result = warehousesService.updateWarehouse(expected);
         assertEquals(expected, result);
     }
 

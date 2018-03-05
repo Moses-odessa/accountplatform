@@ -10,4 +10,6 @@ public interface WarehousesRepository extends MongoRepository<Warehouse, String>
     @Query("{'$and':[{'ownerId': ?0},{'deleted': false}]}")
     List<Warehouse> getAllWarehouses(String ownerId);
 
+    Warehouse findByOwnerIdAndId(String ownerId, String warehousesId);
+
 }

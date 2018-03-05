@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "${warehouses.endpoint.url}", produces = "application/json;charset=UTF-8")
-public class WarehosesController {
+public class WarehousesController {
     @Inject
     private WarehousesService warehousesService;
 
@@ -25,21 +25,27 @@ public class WarehosesController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping(value = "{ownerId}/{warehouseId}")
+    public ResponseEntity<Warehouse> getWarehouseById(@PathVariable String ownerId, @PathVariable String warehouseId) {
+        Warehouse result = warehousesService.getWarehouseById(ownerId, warehouseId);
+        return ResponseEntity.ok(result);
+    }
+
     @PostMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Warehouse> insertWarehous(@Valid @RequestBody Warehouse warehouse) {
-        Warehouse result = warehousesService.insertWarehous(warehouse);
+    public ResponseEntity<Warehouse> insertWarehouse(@Valid @RequestBody Warehouse warehouse) {
+        Warehouse result = warehousesService.insertWarehouse(warehouse);
         return ResponseEntity.ok(result);
     }
 
     @DeleteMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouse> deleteWarehous(@Valid @RequestBody Warehouse warehouse) {
-        Warehouse result = warehousesService.deleteWarehous(warehouse);
+        Warehouse result = warehousesService.deleteWarehouse(warehouse);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(consumes = "application/json;charset=UTF-8")
     public ResponseEntity<Warehouse> updateWarehous(@Valid @RequestBody Warehouse warehouse) {
-        Warehouse result = warehousesService.updateWarehous(warehouse);
+        Warehouse result = warehousesService.updateWarehouse(warehouse);
         return ResponseEntity.ok(result);
     }
 

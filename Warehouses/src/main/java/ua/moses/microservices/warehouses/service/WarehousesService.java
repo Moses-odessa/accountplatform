@@ -8,9 +8,11 @@ public interface WarehousesService {
 
     List<Warehouse> getAllWarehouses(String ownerId);
 
-    Warehouse insertWarehous(Warehouse warehous);
+    Warehouse insertWarehouse(Warehouse warehouse);
 
-    Warehouse deleteWarehous(Warehouse warehous);
+    Warehouse deleteWarehouse(Warehouse warehouse);
 
-    Warehouse updateWarehous(Warehouse warehous);
+    Warehouse updateWarehouse(Warehouse warehouse);
+
+    Warehouse getWarehouseById(String ownerId, String warehouseId);
 }

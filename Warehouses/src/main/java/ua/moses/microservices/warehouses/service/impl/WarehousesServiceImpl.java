@@ -23,27 +23,32 @@ public class WarehousesServiceImpl implements WarehousesService {
     }
 
     @Override
-    public Warehouse insertWarehous(Warehouse warehous) {
-        return warehousesRepository.insert(warehous);
+    public Warehouse insertWarehouse(Warehouse warehouse) {
+        return warehousesRepository.insert(warehouse);
     }
 
     @Override
-    public Warehouse deleteWarehous(Warehouse warehous) {
-        if (warehousesRepository.exists(warehous.getId())) {
-            warehous.setDeleted(true);
-            warehousesRepository.save(warehous);
-            return warehous;
+    public Warehouse deleteWarehouse(Warehouse warehouse) {
+        if (warehousesRepository.exists(warehouse.getId())) {
+            warehouse.setDeleted(true);
+            warehousesRepository.save(warehouse);
+            return warehouse;
         } else {
             return null;
         }
     }
 
     @Override
-    public Warehouse updateWarehous(Warehouse warehous) {
-        if (warehousesRepository.exists(warehous.getId())) {
-            return warehousesRepository.save(warehous);
+    public Warehouse updateWarehouse(Warehouse warehouse) {
+        if (warehousesRepository.exists(warehouse.getId())) {
+            return warehousesRepository.save(warehouse);
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Warehouse getWarehouseById(String ownerId, String warehouseId) {
+        return warehousesRepository.findByOwnerIdAndId(ownerId, warehouseId);
     }
 }
