@@ -1,0 +1,52 @@
+package ua.moses.microservices.companies.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ua.moses.microservices.companies.model.Company;
+import ua.moses.microservices.companies.service.CompaniesService;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "${companies.endpoint.url}", produces = "application/json;charset=UTF-8")
+public class CompaniesController {
+    @Inject
+    private CompaniesService companiesService;
+
+    @GetMapping(value = "{ownerId}")
+    public ResponseEntity<List<Company>> getAllWarehouses(@PathVariable String ownerId) {
+        List<Company> result = companiesService.getAllCompanies(ownerId);
+        if (result == null) {
+            result = new ArrayList<>(0);
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(value = "{ownerId}/{companyId}")
+    public ResponseEntity<Company> getWarehouseById(@PathVariable String ownerId, @PathVariable String companyId) {
+        Company result = companiesService.getCompanyById(ownerId, companyId);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping(consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<Company> insertWarehouse(@Valid @RequestBody Company company) {
+        Company result = companiesService.insertCompany(company);
+        return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping(consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<Company> deleteWarehouse(@Valid @RequestBody Company company) {
+        Company result = companiesService.deleteCompany(company);
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping(consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<Company> updateWarehouse(@Valid @RequestBody Company company) {
+        Company result = companiesService.updateCompany(company);
+        return ResponseEntity.ok(result);
+    }
+
+}

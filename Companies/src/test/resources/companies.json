@@ -1,0 +1,10 @@
+{
+  "companies": {
+    "data": [
+      {"_id":{"$oid":"5a99550ea3e33c0e84641406"},"ownerId":"owner","name":"CompanyName1","deleted":false},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140a"},"ownerId":"owner","name":"CompanyName2","deleted":false},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140b"},"ownerId":"owner","name":"CompanyName3","deleted":true},
+      {"_id":{"$oid": "5747f303631e1e261019914d"},"ownerId":"owner2","name":"CompanyName1","deleted":false}
+    ]
+  }
+}
