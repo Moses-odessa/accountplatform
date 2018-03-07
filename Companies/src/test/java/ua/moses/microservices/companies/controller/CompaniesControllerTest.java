@@ -51,13 +51,6 @@ public class CompaniesControllerTest {
         }
     }
 
-    public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        return mapper.writeValueAsBytes(object);
-    }
-
-
     @Test
     public void getAllCompaniesTest() throws Exception {
         String ownerId = "owner";
