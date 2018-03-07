@@ -27,10 +27,10 @@ db.createUser(
 )
 Create or switch to the db account
 
-use companies
+use account
 Create user in the account db
 
-db.createUser( { user: "root", pwd: "root", roles: [{role: "dbAdmin", db: "companies"}] } )
+db.createUser( { user: "root", pwd: "root", roles: [{role: "dbAdmin", db: "account"}] } )
 
 Using MongoDB for Linux users (local machine install)
 
