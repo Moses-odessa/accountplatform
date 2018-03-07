@@ -1,0 +1,10 @@
+{
+  "customer": {
+    "data": [
+      {"_id":{"$oid":"5a99550ea3e33c0e84641406"},"ownerId":"owner","name":"Customer1","deleted":false,"phonesBook":{"numbers":["123-123-123", "123-233-333"]},"emailsBook":{"emails":["aadas@fdf.com"]},"city":"city1","adressLine":"sdlfkjdslfkj 1","privateComment":"fgd jgdlfk fdlgkj lkfgj "},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140a"},"ownerId":"owner","name":"Customer2","deleted":false,"phonesBook":{"numbers":["123-123-123", "123-233-333"]},"emailsBook":{"emails":["aadas@fdf.com"]},"city":"city1","adressLine":"sdlfkjdslfkj 1","privateComment":"fgd jgdlfk fdlgkj lkfgj "},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140b"},"ownerId":"owner","name":"Customer3","deleted":true,"phonesBook":{"numbers":["123-123-123", "123-233-333"]},"emailsBook":{"emails":["aadas@fdf.com"]},"city":"city1","adressLine":"sdlfkjdslfkj 1","privateComment":"fgd jgdlfk fdlgkj lkfgj "},
+      {"_id":{"$oid": "5747f303631e1e261019914d"},"ownerId":"owner2","name":"Customer1","deleted":false,"phonesBook":{"numbers":["123-123-123", "123-233-333"]},"emailsBook":{"emails":["aadas@fdf.com"]},"city":"city1","adressLine":"sdlfkjdslfkj 1","privateComment":"fgd jgdlfk fdlgkj lkfgj "}
+    ]
+  }
+}
