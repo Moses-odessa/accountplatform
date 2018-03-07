@@ -51,13 +51,6 @@ public class WarehousesControllerTest {
         }
     }
 
-    public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        return mapper.writeValueAsBytes(object);
-    }
-
-
     @Test
     public void getAllWarehousesTest() throws Exception {
         String ownerId = "owner";
@@ -83,7 +76,7 @@ public class WarehousesControllerTest {
         Warehouse expected = new Warehouse(warehouseId, ownerId, "stock1", false);
         when(warehousesService.getWarehouseById(ownerId, warehouseId)).thenReturn(expected);
 
-        mockMvc.perform(get(warehousesEndpointUrl + "/owner/" + warehouseId)
+        mockMvc.perform(get(warehousesEndpointUrl + "/" + ownerId + "/" + warehouseId)
                 .contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
