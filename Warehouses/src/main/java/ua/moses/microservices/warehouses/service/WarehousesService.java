@@ -1,8 +1,10 @@
 package ua.moses.microservices.warehouses.service;
 
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import ua.moses.microservices.warehouses.model.Warehouse;
 
 import java.util.List;
+
 
 public interface WarehousesService {
 
