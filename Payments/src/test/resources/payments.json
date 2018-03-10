@@ -1,0 +1,10 @@
+{
+  "payment": {
+    "data": [
+      {"_id":{"$oid":"5a99550ea3e33c0e84641406"},"ownerId":"owner","companyId":"company1","customerId":"customer1","sum":1000.0,"type":"IN","comment":"serious comment","deleted":false},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140a"},"ownerId":"owner","companyId":"company1","customerId":"customer1","sum":1000.0,"type":"OUT","comment":"serious comment","deleted":false},
+      {"_id":{"$oid":"5a99550ea3e33c0e8464140b"},"ownerId":"owner","companyId":"company2","customerId":"customer2","sum":1000.0,"type":"IN","comment":"serious comment","deleted":true},
+      {"_id":{"$oid": "5747f303631e1e261019914d"},"ownerId":"owner2","companyId":"company1","customerId":"customer2","sum":1000.0,"type":"IN","comment":"serious comment","deleted":false}
+    ]
+  }
+}
