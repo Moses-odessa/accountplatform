@@ -54,7 +54,7 @@ public class CompaniesControllerTest {
     @Test
     public void getAllCompaniesTest() throws Exception {
         String ownerId = "owner";
-        List<Company> expectedList = Arrays.asList(new Company(ownerId, "stock1"), new Company(ownerId, "stock2"));
+        List<Company> expectedList = Arrays.asList(new Company(ownerId, "company1"), new Company(ownerId, "company2"));
         when(companiesService.getAllCompanies(ownerId)).thenReturn(expectedList);
 
         String result = mockMvc.perform(get(companiesEndpointUrl + "/" + ownerId)
@@ -73,10 +73,10 @@ public class CompaniesControllerTest {
     public void getCompanyByIdTest() throws Exception {
         String companyId = "5a981eaba3e33c120c2c67bf";
         String ownerId = "owner";
-        Company expected = new Company(companyId, ownerId, "stock1", false);
+        Company expected = new Company(companyId, ownerId, "company1", false);
         when(companiesService.getCompanyById(ownerId, companyId)).thenReturn(expected);
 
-        mockMvc.perform(get(companiesEndpointUrl + "/owner/" + companyId)
+        mockMvc.perform(get(companiesEndpointUrl + "/" + ownerId + "/" + companyId)
                 .contentType(APPLICATION_JSON_UTF8))
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
@@ -89,7 +89,7 @@ public class CompaniesControllerTest {
 
     @Test
     public void insertCompanyTest() throws Exception {
-        Company expected = new Company("owner", "stock1");
+        Company expected = new Company("owner", "company1");
         when(companiesService.insertCompany(any(Company.class))).thenReturn(expected);
 
         mockMvc.perform(post(companiesEndpointUrl)
@@ -105,7 +105,7 @@ public class CompaniesControllerTest {
 
     @Test
     public void deleteCompanyTest() throws Exception {
-        Company expected = new Company("owner", "stock1");
+        Company expected = new Company("owner", "company1");
         when(companiesService.deleteCompany(any(Company.class))).thenReturn(expected);
 
         mockMvc.perform(delete(companiesEndpointUrl)
@@ -121,7 +121,7 @@ public class CompaniesControllerTest {
 
     @Test
     public void updateCompanyTest() throws Exception {
-        Company expected = new Company("owner", "stock1");
+        Company expected = new Company("owner", "company1");
         when(companiesService.updateCompany(any(Company.class))).thenReturn(expected);
 
         mockMvc.perform(put(companiesEndpointUrl)

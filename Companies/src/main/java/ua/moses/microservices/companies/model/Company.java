@@ -36,7 +36,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Warehouses{" +
+        return "Company{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';

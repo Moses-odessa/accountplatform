@@ -10,6 +10,6 @@ public interface CompaniesRepository extends MongoRepository<Company, String> {
     @Query("{'$and':[{'ownerId': ?0},{'deleted': false}]}")
     List<Company> getAllCompanies(String ownerId);
 
-    Company findByOwnerIdAndId(String ownerId, String warehousesId);
+    Company findByOwnerIdAndId(String ownerId, String companyId);
 
 }

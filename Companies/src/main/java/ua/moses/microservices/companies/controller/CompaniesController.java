@@ -17,7 +17,7 @@ public class CompaniesController {
     private CompaniesService companiesService;
 
     @GetMapping(value = "{ownerId}")
-    public ResponseEntity<List<Company>> getAllWarehouses(@PathVariable String ownerId) {
+    public ResponseEntity<List<Company>> getAllCompanies(@PathVariable String ownerId) {
         List<Company> result = companiesService.getAllCompanies(ownerId);
         if (result == null) {
             result = new ArrayList<>(0);
@@ -26,25 +26,25 @@ public class CompaniesController {
     }
 
     @GetMapping(value = "{ownerId}/{companyId}")
-    public ResponseEntity<Company> getWarehouseById(@PathVariable String ownerId, @PathVariable String companyId) {
+    public ResponseEntity<Company> getCompanyById(@PathVariable String ownerId, @PathVariable String companyId) {
         Company result = companiesService.getCompanyById(ownerId, companyId);
         return ResponseEntity.ok(result);
     }
 
     @PostMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Company> insertWarehouse(@Valid @RequestBody Company company) {
+    public ResponseEntity<Company> insertCompany(@Valid @RequestBody Company company) {
         Company result = companiesService.insertCompany(company);
         return ResponseEntity.ok(result);
     }
 
     @DeleteMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Company> deleteWarehouse(@Valid @RequestBody Company company) {
+    public ResponseEntity<Company> deleteCompany(@Valid @RequestBody Company company) {
         Company result = companiesService.deleteCompany(company);
         return ResponseEntity.ok(result);
     }
 
     @PutMapping(consumes = "application/json;charset=UTF-8")
-    public ResponseEntity<Company> updateWarehouse(@Valid @RequestBody Company company) {
+    public ResponseEntity<Company> updateCompany(@Valid @RequestBody Company company) {
         Company result = companiesService.updateCompany(company);
         return ResponseEntity.ok(result);
     }

@@ -14,5 +14,5 @@ public interface CompaniesService {
 
     Company updateCompany(Company company);
 
-    Company getCompanyById(String ownerId, String warehouseId);
+    Company getCompanyById(String ownerId, String companyId);
 }
